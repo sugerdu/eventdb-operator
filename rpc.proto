@@ -1,0 +1,34 @@
+
+// 定义常用选项
+option java_package = "com.hbase.endpoint";	//指定生成Java代码的包名
+option java_outer_classname = "OperatorLibrary";	//指定生成Java代码的外部类名称
+option java_generic_services = true;	//基于服务定义产生抽象服务代码
+option optimize_for = SPEED;	//指定优化级别
+// 定义请求包
+message OperatorLibraryRequest {
+	 required string tablename = 1; //表名
+	 required string runID = 2;	//runID
+	 required string property = 3;	//属性名
+	 required string startvalue=4;	//起始值
+	 required string endvalue=5;	//结束值
+}
+// 定义回复包
+message OperatorLibraryResponse {
+	repeated  double result = 1 ;	//返回结果
+}
+// 定义RPC服务
+service OperatorLibraryService {
+	//获取求和结果
+	rpc getGamma(OperatorLibraryRequest)
+		returns (OperatorLibraryResponse);
+	rpc getErf(OperatorLibraryRequest)
+		returns (OperatorLibraryResponse);
+	rpc getSum(OperatorLibraryRequest)
+		returns (OperatorLibraryResponse);
+	rpc getAve(OperatorLibraryRequest)
+		returns (OperatorLibraryResponse);
+	rpc getMax(OperatorLibraryRequest)
+		returns (OperatorLibraryResponse);
+	rpc getMin(OperatorLibraryRequest)
+		returns (OperatorLibraryResponse);
+}
