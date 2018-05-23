@@ -28,9 +28,9 @@ import org.apache.hadoop.io.IOUtils;
 import com.google.protobuf.RpcCallback;
 import com.google.protobuf.RpcController;
 import com.google.protobuf.Service;
-import com.hbase.endpoint.OperatorLibrary.OperatorLibraryRequest;
-import com.hbase.endpoint.OperatorLibrary.OperatorLibraryResponse;
-import com.hbase.endpoint.OperatorLibrary.OperatorLibraryService;
+import org.osv.eventdb.OperatorLibrary.OperatorLibraryRequest;
+import org.osv.eventdb.OperatorLibrary.OperatorLibraryResponse;
+import org.osv.eventdb.OperatorLibrary.OperatorLibraryService;
 
 import net.blackruffy.root.*;
 import static net.blackruffy.root.JRoot.*;
@@ -244,11 +244,11 @@ Coprocessor, CoprocessorService {
 	public void getErf(RpcController controller, OperatorLibraryRequest request,
 			RpcCallback<OperatorLibraryResponse> done) {
 		// TODO Auto-generated method stub
-//		ArrayList<Double> datalist=getdata(controller,request);
-		ArrayList<Double> datalist = new ArrayList<Double>();
+		ArrayList<Double> datalist=getdata(controller,request);
+		/*ArrayList<Double> datalist = new ArrayList<Double>();
 		datalist.add(0.01);
 		datalist.add(0.02);
-		datalist.add(0.03);
+		datalist.add(0.03);*/
 		OperatorLibraryResponse response = null;
 		List<Double> ErfResults = new ArrayList<>();
 		if(datalist.contains(Double.MIN_VALUE)||datalist.isEmpty())

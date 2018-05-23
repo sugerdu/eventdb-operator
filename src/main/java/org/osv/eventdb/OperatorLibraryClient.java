@@ -10,9 +10,9 @@ import org.apache.hadoop.hbase.client.Connection;
 import org.apache.hadoop.hbase.client.HTable;
 import org.apache.hadoop.hbase.client.coprocessor.Batch;
 import org.apache.hadoop.hbase.ipc.BlockingRpcCallback;
-import com.hbase.endpoint.OperatorLibrary.OperatorLibraryRequest;
-import com.hbase.endpoint.OperatorLibrary.OperatorLibraryResponse;
-import com.hbase.endpoint.OperatorLibrary.OperatorLibraryService;
+import org.osv.eventdb.OperatorLibrary.OperatorLibraryRequest;
+import org.osv.eventdb.OperatorLibrary.OperatorLibraryResponse;
+import org.osv.eventdb.OperatorLibrary.OperatorLibraryService;
 
 /**
  * @author DZR

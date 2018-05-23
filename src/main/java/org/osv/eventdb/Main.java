@@ -28,12 +28,12 @@ public class Main {
 	    conf.set("hbase.zookeeper.quorum", "127.0.0.1");
 	    conf.set("hbase.zookeeper.property.clientPort", "2185");
 	    conf.set("hbase.master", "192.168.0.178:61000");
-	    String path = "hdfs://192.168.0.178:9000/springz/OperatorEndpoint-1.0-SNAPSHOT.jar";
+	    String path = "hdfs://192.168.0.178:9000/user/OperatorLibrary/endpoint-ep.jar";
 		// 建立一个数据库的连接
 		Connection conn = ConnectionFactory.createConnection(conf);
 		Admin admin = conn.getAdmin();
 		// 连接请求表（判断输入是否正确）
-		/*Scanner sc = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 		System.out.println("请输入表名：");
 		String table_name = null;
 		boolean table_bool = true;
@@ -46,10 +46,10 @@ public class Main {
 				System.out.println("没有此表，请重新输入表名：");		
 			else
 				table_bool = false;
-		}*/
-		Scanner sc = new Scanner(System.in);
+		}
+/*		Scanner sc = new Scanner(System.in);
 		String table_name = null;
-		table_name = "endpointTest";
+		table_name = "endpointTest";*/
 		// 加载协处理器
 		System.out.println("正在加载协处理器……");
 		HTableDescriptor tableDesc = admin.getTableDescriptor(TableName
@@ -67,7 +67,7 @@ public class Main {
 			admin.enableTable(TableName.valueOf(table_name));
 			System.out.println("enable table ok");
 		}
-		/*// 输入runID
+		// 输入runID
 		System.out.println("请输入runID");
 		String	runID = sc.nextLine();
 		//输入property
@@ -78,11 +78,11 @@ public class Main {
 		String	startvalue = sc.nextLine();
 		// 输入endvalue
 		System.out.println("请输入终止范围");
-		String	endvalue = sc.nextLine();*/
-		String runID = "47543";
+		String	endvalue = sc.nextLine();
+/*		String runID = "47543";
 		String	property = "NTracks";
 		String	startvalue = "1";
-		String	endvalue = "2";
+		String	endvalue = "2";*/
 		
 		// 选择算子（判断输入算子是否正确：）
 		Class<OperatorLibraryClient> cl = OperatorLibraryClient.class;
@@ -138,7 +138,7 @@ public class Main {
 		System.out.println("正在卸载协处理器……");
 		admin.disableTable(TableName.valueOf(table_name));
 		tableDesc
-				.removeCoprocessor("com.hbase.endpoint.OperatorLibraryEndPoint");
+				.removeCoprocessor(OperatorLibraryEndPoint.class.getCanonicalName());
 		admin.modifyTable(TableName.valueOf(table_name), tableDesc);
 		admin.enableTable(TableName.valueOf(table_name));
 		System.out.println("卸载完成");
