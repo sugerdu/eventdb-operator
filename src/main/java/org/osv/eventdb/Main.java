@@ -26,7 +26,7 @@ public class Main {
 		// 配置HBase
 		Configuration conf = HBaseConfiguration.create();
 	    conf.set("hbase.zookeeper.quorum", "127.0.0.1");
-	    conf.set("hbase.zookeeper.property.clientPort", "2185");
+	    conf.set("hbase.zookeeper.property.clientPort", "2181");
 	    conf.set("hbase.master", "192.168.0.178:61000");
 	    String path = "hdfs://192.168.0.178:9000/user/OperatorLibrary/endpoint-ep.jar";
 		// 建立一个数据库的连接

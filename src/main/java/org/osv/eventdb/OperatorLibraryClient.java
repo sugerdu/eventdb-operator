@@ -16,7 +16,7 @@ import org.osv.eventdb.OperatorLibrary.OperatorLibraryService;
 
 /**
  * @author DZR
- * 说明：hbase协处理器endpooint的客户端代码
+ * 说明：hbase协处理器endpoint的客户端代码
  * 功能：从服务端获取对hbase表指定列的数据的求和结果
  */
 
