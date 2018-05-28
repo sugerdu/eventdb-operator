@@ -55,7 +55,7 @@ Temporary Items
 .classpath
 config.properties
 node_modules/
-#bin/
+bin/
 obj/
 .idea/
 target/

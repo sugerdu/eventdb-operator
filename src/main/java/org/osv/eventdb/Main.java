@@ -38,7 +38,7 @@ public class Main {
 		String table_name = null;
 		boolean table_bool = true;
 		while (table_bool) {
-			//table_name = sc.nextLine();
+			table_name = sc.nextLine();
 			
 			if(table_name.contains(" ")||table_name.matches("\\s+"))
 				System.out.println("没有此表，请重新输入表名：");		
