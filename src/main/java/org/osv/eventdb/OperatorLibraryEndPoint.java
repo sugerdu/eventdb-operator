@@ -80,6 +80,8 @@ Coprocessor, CoprocessorService {
 		//生成rowkey
 		String startrowkey = runID+"#"+property+"#"+startvalue;
 		String endrowkey = runID+"#"+property+"#"+endvalue;
+		//输出rowkey
+		System.out.println("The rowkey is "+startrowkey+" and "+endrowkey);
 		
 		//设置扫描对象
 		Scan scan = new Scan();
@@ -101,6 +103,8 @@ Coprocessor, CoprocessorService {
                     str[temp] = new String(CellUtil.cloneValue(cell));
                     temp++;
                 }
+				//输出value
+				System.out.println(str[0]+" "+str[1]+" "+str[2]+" "+str[3]);
                 indexrs.add(str);
                 results.clear();
             } while (hasMore);
@@ -147,6 +151,8 @@ Coprocessor, CoprocessorService {
 					for(int j=0;j<root_offset.length;j++) {
 						tree.getEntry((long) root_offset[j]);
 						double data=tree.getLeaf(property).getValue();
+						//输出data
+						System.out.print(data+" ");
 						datalist.add(data);
 					}
 				}
@@ -193,6 +199,8 @@ Coprocessor, CoprocessorService {
         } finally {  
             IOUtils.closeStream(in);  
         }
+		//输出index
+		System.out.println(b);
         return b;
     }
 	
