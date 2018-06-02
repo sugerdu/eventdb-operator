@@ -111,6 +111,7 @@ public class Main {
 		{
 			List<Double> result = (List<Double>) result_object;
 			System.out.println("The result is "+result);
+			System.out.println(Double.MIN_VALUE);
 			
 			if(result.contains(Double.MIN_VALUE))
 			{
