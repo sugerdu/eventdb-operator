@@ -223,7 +223,9 @@ Coprocessor, CoprocessorService {
 	public void getGamma(RpcController controller, OperatorLibraryRequest request,
 			RpcCallback<OperatorLibraryResponse> done) {
 		// TODO Auto-generated method stub
+		System.out.println("let us get data");
 		ArrayList<Double> datalist=getdata(controller,request);
+		System.out.println("The data is "+datalist);
 		OperatorLibraryResponse response = null;
 		List<Double> GammaResults = new ArrayList<>();
 		if(datalist.contains(Double.MIN_VALUE)||datalist.isEmpty())
