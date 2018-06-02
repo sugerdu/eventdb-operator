@@ -106,9 +106,11 @@ public class Main {
 		Object ar[] = { table_name, runID, property, startvalue,endvalue, conn };
 		Object result_object = methods.get(Operator_name).invoke(
 				OperatorLibraryClient.class.newInstance(), ar);
+		System.out.println("before the if");
 		if(methods.get(Operator_name).getReturnType()==List.class)
 		{
 			List<Double> result = (List<Double>) result_object;
+			System.out.println("The result is "+result);
 			
 			if(result.contains(Double.MIN_VALUE))
 			{
