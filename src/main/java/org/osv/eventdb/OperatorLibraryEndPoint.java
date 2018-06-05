@@ -125,7 +125,7 @@ Coprocessor, CoprocessorService {
 		try{
 			for(int i=0;i<indexrs.size();i++) {
 				//String path = "hdfs://sbd01:8020/eventdb/"+tableName.split(":")[1]+"/data/"+indexrs.get(i)[3]+".data";
-				String path = "hdfs://localhost:9000/eventdb/"+tableName+"/data/"+indexrs.get(i)[3]+".data";
+				String path = "hdfs://localhost:9000/eventdb/"+tableName+"/data/00"+indexrs.get(i)[3]+".data";
 				String offset = indexrs.get(i)[2];
 				String lengh = indexrs.get(i)[1];
 				if(!new String(readFile(path,offset,lengh)).equals("no"))
@@ -223,9 +223,7 @@ Coprocessor, CoprocessorService {
 	public void getGamma(RpcController controller, OperatorLibraryRequest request,
 			RpcCallback<OperatorLibraryResponse> done) {
 		// TODO Auto-generated method stub
-		System.out.println("let us get data");
 		ArrayList<Double> datalist=getdata(controller,request);
-		System.out.println("The data is "+datalist);
 		OperatorLibraryResponse response = null;
 		List<Double> GammaResults = new ArrayList<>();
 		if(datalist.contains(Double.MIN_VALUE)||datalist.isEmpty())
