@@ -121,7 +121,7 @@ Coprocessor, CoprocessorService {
 		try{
 			for(int i=0;i<indexrs.size();i++) {
 				//String path = "hdfs://sbd01:8020/eventdb/"+tableName.split(":")[1]+"/data/"+indexrs.get(i)[3]+".data";
-				String path = "hdfs://192.168.0.178:9000/eventdb/"+tableName+"/data/"+indexrs.get(i)[3]+".data";
+				String path = "hdfs://localhost:9000/eventdb/"+tableName+"/data/"+indexrs.get(i)[3]+".data";
 				String offset = indexrs.get(i)[2];
 				String lengh = indexrs.get(i)[1];
 				if(!new String(readFile(path,offset,lengh)).equals("no"))
