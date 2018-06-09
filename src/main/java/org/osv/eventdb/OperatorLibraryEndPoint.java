@@ -143,7 +143,7 @@ Coprocessor, CoprocessorService {
 					String rootName = (String)json_iterator.next();
 					Object[] root_offset = json.getJSONArray(rootName).toArray();
 					String tempRunID = rootName.split("_")[1];
-					String rootPath="/home/shane/zyd/rootfile/"+tempRunID+"/"+rootName;
+					String rootPath="hdfs://localhost:9000/user/"+tempRunID+"/"+rootName;
 					final TFile file = newTFile(rootPath,"READ");
 					final TTree tree= TTree (file.get("ntTAG"));
 					TLeaf tleaf=tree.getLeaf(property);
