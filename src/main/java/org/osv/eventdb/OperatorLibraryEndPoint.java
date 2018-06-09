@@ -144,16 +144,16 @@ Coprocessor, CoprocessorService {
 					Object[] root_offset = json.getJSONArray(rootName).toArray();
 					String tempRunID = rootName.split("_")[1];
 					String rootPath="hdfs://localhost:9000/user/"+tempRunID+"/"+rootName;
-					final TFile file = newTFile(rootPath,"READ");
+					/*final TFile file = newTFile(rootPath,"READ");
 					final TTree tree= TTree (file.get("ntTAG"));
-					TLeaf tleaf=tree.getLeaf(property);
+					TLeaf tleaf=tree.getLeaf(property);*/
 					for(int j=0;j<root_offset.length;j++) {
-						tree.getEntry((long) (int) root_offset[j]);	
-						double data=tleaf.getValue();
+						//tree.getEntry((long) (int) root_offset[j]);	
+						double data=5.5555;
 						datalist.add(data);
 					}
-					tree.delete();
-					file.close();
+					/*tree.delete();
+					file.close();*/
 				}
 			}catch (Exception e) {
 				datalist.add(Double.MIN_VALUE);
