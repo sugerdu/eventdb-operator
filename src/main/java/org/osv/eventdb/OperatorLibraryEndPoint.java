@@ -80,8 +80,6 @@ Coprocessor, CoprocessorService {
 		//生成rowkey
 		String startrowkey = runID+"#"+property+"#"+startvalue;
 		String endrowkey = runID+"#"+property+"#"+endvalue;
-		//输出rowkey
-		System.out.println("The rowkey is "+startrowkey+" and "+endrowkey);
 		
 		//设置扫描对象
 		Scan scan = new Scan();
@@ -103,8 +101,6 @@ Coprocessor, CoprocessorService {
                     str[temp] = new String(CellUtil.cloneValue(cell));
                     temp++;
                 }
-				//输出value
-				System.out.println(str[0]+" "+str[1]+" "+str[2]+" "+str[3]);
                 indexrs.add(str);
                 results.clear();
             } while (hasMore);
@@ -125,7 +121,7 @@ Coprocessor, CoprocessorService {
 		try{
 			for(int i=0;i<indexrs.size();i++) {
 				//String path = "hdfs://sbd01:8020/eventdb/"+tableName.split(":")[1]+"/data/"+indexrs.get(i)[3]+".data";
-				String path = "hdfs://localhost:9000/eventdb/"+tableName+"/data/00"+indexrs.get(i)[3]+".data";
+				String path = "hdfs://192.168.0.178:9000/eventdb/"+tableName+"/data/"+indexrs.get(i)[3]+".data";
 				String offset = indexrs.get(i)[2];
 				String lengh = indexrs.get(i)[1];
 				if(!new String(readFile(path,offset,lengh)).equals("no"))
@@ -146,15 +142,18 @@ Coprocessor, CoprocessorService {
 				while(json_iterator.hasNext()) {
 					String rootName = (String)json_iterator.next();
 					Object[] root_offset = json.getJSONArray(rootName).toArray();
-					final TFile file = newTFile(rootName+".root");
+					String tempRunID = rootName.split("_")[1];
+					String rootPath="/home/shane/zyd/rootfile/"+tempRunID+"/"+rootName;
+					final TFile file = newTFile(rootPath,"READ");
 					final TTree tree= TTree (file.get("ntTAG"));
+					TLeaf tleaf=tree.getLeaf(property);
 					for(int j=0;j<root_offset.length;j++) {
-						tree.getEntry((long) root_offset[j]);
-						double data=tree.getLeaf(property).getValue();
-						//输出data
-						System.out.print(data+" ");
+						tree.getEntry((long) (int) root_offset[j]);	
+						double data=tleaf.getValue();
 						datalist.add(data);
 					}
+					tree.delete();
+					file.close();
 				}
 			}catch (Exception e) {
 				datalist.add(Double.MIN_VALUE);
