@@ -118,7 +118,7 @@ Coprocessor, CoprocessorService {
 //		String[] content = new String[indexrs.size()];
 		ArrayList<String> content=new ArrayList<>();
 		//确定路径，调用readFile()方法返回索引
-		try{
+		/*try{
 			for(int i=0;i<indexrs.size();i++) {
 				//String path = "hdfs://sbd01:8020/eventdb/"+tableName.split(":")[1]+"/data/"+indexrs.get(i)[3]+".data";
 				String path = "hdfs://localhost:9000/eventdb/"+tableName+"/data/"+indexrs.get(i)[3]+".data";
@@ -131,7 +131,7 @@ Coprocessor, CoprocessorService {
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 //		byte[] rootIndex = content.getBytes();
 		//进行JSON解析，读取ROOT文件，获取数据
 /*		for(int i=0;i<content.size();i++)
@@ -369,9 +369,9 @@ Coprocessor, CoprocessorService {
 		// TODO Auto-generated method stub
 //		ArrayList<Double> datalist=getdata(controller,request);
 		ArrayList<Double> datalist = new ArrayList<Double>();
-		datalist.add(0.01);
-		datalist.add(0.02);
-		datalist.add(0.03);
+		datalist.add(1.01);
+		datalist.add(2.02);
+		datalist.add(3.03);
 		Log.info("getdata ret is: " + datalist);
 		OperatorLibraryResponse response = null;
 		double min=0.0;
